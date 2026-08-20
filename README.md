@@ -71,8 +71,18 @@ To execute the entire data pipeline from raw files to final figures and reports,
 ## Team Contribution Statement
 
 This project was developed by a team 4 people include.
-1. Path Pisoth       ID: CSE2024190005
-2. Vong Sokraksa     ID: CSE2024190001
-3. Thou Soengvisal   ID: CSE2024190021
-4. Sun Sothy         ID: CSE2024190041 
+1. Sun Sothy         ID: CSE2024190041
+2. Thou Soengvisal   ID: CSE2024190021
+3. Vong Sokraksa     ID: CSE2024190001
+4. Path Pisoth       ID: CSE2024190005
+
+
+Sun Sothy — Project Setup & SQL Data Extraction. Built data_loading.py to load the raw SQLite database and the two external CSVs (legacy_customers_export.csv, product_catalog_2024.csv) into the pipeline. Presented the project overview, dataset description, database schema/ERD, and known data quality issues, then wrote and validated all 10 SQL queries in sql/queries.sql — revenue by category, top customers, monthly revenue trends (CTE/window functions), and the remaining Queries 3–10 (returns, loyalty, ratings, device behavior, revenue rank, payment method, age group).
+
+Thou Soengvisal — Data Cleaning & Customer Segmentation. Owned cleaning.py: standardized 4 legacy date formats and inconsistent text fields, deduplicated customers on email, resolved product price outliers with IQR capping, reconciled the legacy CRM export and supplier catalog against the internal database, and removed duplicate order-item and out-of-range review rows. Implemented the RFM customer segmentation model in numpy_analysis.py (percentile scoring, digitize, Champions/Loyal/At-Risk classification).
+
+Vong Sokraksa — Recommendation & Forecasting Models. Implemented the remaining models in numpy_analysis.py: the cosine-similarity product recommendation engine, linear regression revenue forecasting via the Normal Equation (R², forward forecast), and the Monte Carlo stockout simulation (5,000+ trials, reorder points).
+
+Path Pisoth — Visualization, Reporting & Business Synthesis. Built the chart suite in visualizations.py (profit margins, reviews vs. repeat purchases, conversion heatmap, revenue forecast, Monte Carlo distributions, data quality impact). Built pipeline.py to run the full workflow end-to-end and generate_report.py to compile report.pdf/executive_summary.pdf, coordinated the written report and README documentation, and delivered the key findings, three leadership questions, and final business recommendations.
 * **100% of Effort**: Data extraction (SQL), loading and preprocessing (Pandas), numerical modeling (NumPy), chart generation (Matplotlib/Seaborn), and technical writing (ReportLab).
+
